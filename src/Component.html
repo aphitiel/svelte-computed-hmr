@@ -1,5 +1,8 @@
 <pre>
-computed: {{test}}
+computed:
+{{#each Array(2) as _, i}}
+  {{test + somethingElse[i]}}:
+{{/each}}
 a: {{a}} <button on:click="set({a: a+1})">++</button>
 </pre>
 
@@ -8,9 +11,18 @@ a: {{a}} <button on:click="set({a: a+1})">++</button>
 export default {
   data: () => ({
     a: 1,
+    somethingElse: [0,0],
   }),
   computed: {
     test: a => a * 10,
+  },
+
+  oncreate() {
+    setTimeout(() => {
+      this.set({somethingElse: [
+        0,1
+      ]});
+    }, 500);
   },
 }
 </script>
