@@ -1,0 +1,17 @@
+<pre>
+computed: {{test}}
+a: {{a}} <button on:click="set({a: a+1})">++</button>
+</pre>
+
+
+<script>
+export default {
+  data: () => ({
+    a: 1,
+  }),
+  computed: {
+    test: a => a * 10,
+  },
+}
+</script>
+
